@@ -43,12 +43,12 @@ public class ToggleCommand extends ModCommand {
     
     @Override
     public String getCommandName() {
-        return "togglechat";
+        return "tc";
     }
     
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("tc", "chattoggle");
+        return Arrays.asList("chattoggle");
     }
     
     @Override
