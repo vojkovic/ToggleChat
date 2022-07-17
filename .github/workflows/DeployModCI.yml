@@ -10,7 +10,6 @@ name: Java CI with Forge
 on:
   push:
     paths:
-      - .github/workflows/**
       - src/**
       - build.gradle
 
@@ -27,14 +26,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-
-      - name: Commit message
-        id: com-mess
-        env: 
-          GITHUB_CONTEXT: ${{ toJson(github) }} 
-        run: |
-           echo ::set-output name=commitmsg::$(git log --format=%B -n 1 ${{ github.event.after }})
-           echo "${{ github.run_number }}" > ./ToggleChat/src/main/resources/GHCI.txt
 
         # Required so gradlew can build the JAR file
       - name: Grant execute permission for gradlew
@@ -55,12 +46,6 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
       
-      - name: Calculate Hashes
-        id: hashes
-        run: |
-          echo ::set-output name=program_hash::$(sha256sum ./ToggleChat/build/libs/ToggleChat.jar | cut -d ' ' -f 1)
-          echo ::set-output name=source_hash::$(sha256sum ./ToggleChat/build/libs/ToggleChat-sources.jar | cut -d ' ' -f 1)
-
       # Upload the main mod to the releases tab
       - name: Create Release
         id: create_release
@@ -72,25 +57,6 @@ jobs:
         with:
           tag_name: 3.0.${{ github.run_number }}
           release_name: Beta Release ${{ github.run_number }}
-          body: |
-            ### ToggleChat Beta ${{ github.run_number }}
-            > Huh, nothing here?
-            
-            ```
-            ${{ steps.com-mess.outputs.commitmsg }}
-            ```
-            
-            **Next up**
-            > What's on the roadmap?
-            
-            It seems quiet... Too quiet...
-            
-            **Hashes**
-            > Don't install untrusted files
-            * ToggleChat: ${{ steps.hashes.outputs.program_hash }}
-            * ToggleChat-sources: ${{ steps.hashes.outputs.source_hash }}
-            
-            Automagically generated with lots of ❤
           draft: false
           prerelease: true
       - name: Upload Mod
