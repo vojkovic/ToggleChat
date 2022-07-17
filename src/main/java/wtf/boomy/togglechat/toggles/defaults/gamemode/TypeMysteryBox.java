@@ -25,9 +25,9 @@ import java.util.regex.Pattern;
 public class TypeMysteryBox extends ToggleBase {
 
     private final Pattern mysteryPattern = Pattern
-            .compile("\u2726 \\ (?<player>\\S{1,16}) found a (?<star>\\S{1,5}) Mystery Box!");
+            .compile("\u2726 (?<player>\\S{1,16}) found a (?<star>\\S{1,5}) Mystery Box!");
     private final Pattern mysteryFoundPattern = Pattern
-            .compile("\u2726 \\ (?<player>\\S{1,16}) found a (?<thing>.*)!");
+            .compile("\u2726 (?<player>\\S{1,16}) found a (?<thing>.*)!");
 
     @Override
     public String getName() {
