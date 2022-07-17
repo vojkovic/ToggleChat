@@ -18,10 +18,12 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url = "https://jitpack.io/" }
         maven { url = "https://maven.minecraftforge.net/" }
     }
     dependencies {
-        classpath 'com.github.MinecraftForge:ForgeGradle:de97d28aaf' 
+        classpath 'com.github.MinecraftForge:ForgeGradle:de97d28aaf'
+        implementation 'com.github.User:Repo:Tag' 
     }
 }
 
