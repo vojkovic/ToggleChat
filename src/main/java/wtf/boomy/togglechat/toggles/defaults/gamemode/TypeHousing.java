@@ -29,33 +29,19 @@ public class TypeHousing extends ToggleBase {
 
     @Override
     public String getName() {
-        return "Housing";
+        return "Housing Join/Leave";
     }
 
     @Override
     public boolean shouldToggle(String message) {
-        return this.worldJoinPattern.matcher(message).matches() || (message.startsWith("[OWNER] ")
-                || message.startsWith("[CO-OWNER] ") || message.startsWith("[RES] "));
+        return this.worldJoinPattern.matcher(message).matches();
     }
 
     @Override
     public String[] getDescription() {
         return new String[] {
-                "Toggles all Housing chat",
-                "messages that start with",
-                "the following",
-                "",
-                "&6[OWNER]",
-                "&6[CO-OWNER]",
-                "&6[RES]",
-                "",
-                "Also toggles housing join",
-                "and leave messages",
-                "",
-                "Build peacefully and",
-                "without hassle,",
-                "as if you were in a",
-                "zen garden"
+                "Toggles housing join",
+                "and leave messages"
         };
     }
     
