@@ -22,7 +22,7 @@ buildscript {
         maven { url = "https://maven.minecraftforge.net/" }
     }
     dependencies {
-        implementation 'com.github.MinecraftForge:ForgeGradle:de97d28aaf'
+        classpath 'com.github.MinecraftForge:ForgeGradle:de97d28aaf'
     }
 }
 
