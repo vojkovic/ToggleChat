@@ -26,10 +26,10 @@ public class TypeMysteryBox extends ToggleBase {
 
     private final Pattern mysteryPattern = Pattern
         // ✦ [RANK] Player found a ✰✰✰✰✰ Mystery Box!
-        .compile("\u2726 (?<player>\\S{1,16}) found a (?<star>\\S{1,5}) Mystery Box!");
+        .compile("\u2726 (?<player>.*)found a (?<star>.....) Mystery Box!");
     private final Pattern mysteryFoundPattern = Pattern
         // ✦ [RANK] Player found an Item in a Mystery Box!
-        .compile("\u2726 \\ (?<player>\\S{1,16}) found (?<thing>.*)!");
+        .compile("\u2726 (?<player>.*) found (a|an) (?<thing>.*) in a Mystery Box!");
 
     @Override
     public String getName() {
