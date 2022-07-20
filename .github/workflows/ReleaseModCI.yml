@@ -10,6 +10,7 @@ name: Build Mod CI
 on:
   push:
     paths:
+     - .github/workflows/**
       - src/**
       - build.gradle
 
