@@ -1,5 +1,5 @@
 # Hypixel ToggleChat Mod
-#### Version 4.0.0
+#### Version 4.0
 
 ## Features
 * Numerous different chat toggles for ultimate chat supremacy
