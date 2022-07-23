@@ -5,6 +5,10 @@
 
 name: Build Mod CI
 
+# Set version number
+env:
+  VERSION: 4.0.2
+
 # Trigger the integration for pull requests and pushes
 # to every branch on the repository
 on:
@@ -49,8 +53,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: 4.0.${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
+          tag_name: ${{ env.VERSION }}
+          release_name: Release ${{ env.VERSION }}
           draft: false
           prerelease: false
           
@@ -63,8 +67,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: './build/libs/ToggleChat.jar'
-          asset_name: ToggleChat-4.0.${{ github.run_number }}.jar
+          asset_path: './build/libs/ToggleChat-${{ env.VERSION}}.jar'
+          asset_name: ToggleChat-${{ env.VERSION }}.jar
           asset_content_type: application/zip
       - name: Upload Mod Sources
         id: upload-sources-asset 
@@ -76,5 +80,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
           asset_path: './build/libs/ToggleChat-sources.jar'
-          asset_name: ToggleChat-sources.jar
+          asset_name: ToggleChat-sources-${{ env.VERSION }}.jar
           asset_content_type: application/zip
