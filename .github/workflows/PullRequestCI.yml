@@ -51,13 +51,6 @@ jobs:
       - name: Launch Forge Workspace
         run: ./gradlew setupCIWorkspace clean
 
-        # Deletes any unnecessary files which shouldn't
-        # exist in the first place.
-      - name: Clean output directories
-        run: |
-          rm -f -R out
-          rm -f -R build
-
         # Uses ForgeGradle to build the jar
       - name: Build with Gradle
         run: ./gradlew build

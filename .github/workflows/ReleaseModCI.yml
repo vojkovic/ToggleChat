@@ -36,13 +36,6 @@ jobs:
       - name: Launch Forge Workspace
         run: ./gradlew setupCIWorkspace clean
 
-        # Deletes any unnecessary files which shouldn't
-        # exist in the first place.
-      - name: Clean output directories
-        run: |
-          rm -f -R out
-          rm -f -R build
-
         # Uses ForgeGradle to build the jar
       - name: Build with Gradle
         run: ./gradlew build
@@ -57,9 +50,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: 4.0.${{ github.run_number }}
-          release_name: Beta Release ${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
           draft: false
-          prerelease: true
+          prerelease: false
+          
       - name: Upload Mod
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1

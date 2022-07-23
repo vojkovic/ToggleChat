@@ -1,7 +1,11 @@
 [
-  {
-    "modid": "togglechatmod",
-    "name": "ToggleChatMod",
-    "author": "boomboompower"
-  }
+{
+ "modid": "togglechat",
+ "name": "ToggleChat",
+ "description": "A simple and elegant Hypixel chat toggling mod for ultimate chat supremacy.",
+ "version": "4.0.2",
+ "authorList": ["vojkovic, boomboompower, OrangeMarshall, SirNapkin1334"],
+ "url": "https://tc.priv.au",
+ "logoFile": "togglechat-icon.png"
+}
 ]

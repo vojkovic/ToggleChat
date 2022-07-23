@@ -1,19 +1,4 @@
-/*
- *     Copyright (C) 2022 Brock Vojkovic
- *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
 
 package au.priv.togglechat;
 
@@ -31,20 +16,15 @@ import au.priv.togglechat.commands.impl.ToggleCommand;
 import au.priv.togglechat.config.ConfigLoader;
 import au.priv.togglechat.toggles.ToggleHandler;
 import au.priv.togglechat.utils.ChatColor;
-import au.priv.togglechat.utils.uis.blur.BlurModHandler;
 
 import java.io.File;
 import java.util.Arrays;
 
-@Mod(modid = ToggleChatMod.MODID, version = ToggleChatMod.VERSION, acceptedMinecraftVersions = "*")
-public class ToggleChatMod {
+@Mod(modid = "togglechat", useMetadata = true)
 
-    public static final String MODID = "togglechatmod";
-    public static final String VERSION = "3.1.0";
-    
+public class ToggleChatMod {
     private final ToggleHandler toggleHandler;
     private ConfigLoader configLoader;
-    private BlurModHandler blurModHandler;
 
     @Mod.Instance
     private static ToggleChatMod instance;
@@ -52,23 +32,10 @@ public class ToggleChatMod {
     public ToggleChatMod() {
         this.toggleHandler = new ToggleHandler(this);
     }
-    
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        ModMetadata data = event.getModMetadata();
-        data.version = VERSION;
-        data.name = ChatColor.GOLD + "ToggleChat";
-        data.authorList.addAll(Arrays.asList("boomboompower", "OrangeMarshall", "tterrag1098", "SirNapkin1334"));
-        data.description = "Use " + ChatColor.BLUE + "/tc" + ChatColor.RESET + " to get started! " + ChatColor.GRAY
-            + "|" + ChatColor.RESET + " Made with " + ChatColor.LIGHT_PURPLE + "<3" + ChatColor.RESET + " by boomboompower";
-
-        data.url = "https://hypixel.net/threads/997547";
-
-        // These are the greatest people, shower them with praise and good fortune!
-        data.credits = "2Pi for the idea, OrangeMarshall for help with CustomToggles and tterrag1098 for the gui blur code";
-
         this.configLoader = new ConfigLoader(this, new File(event.getModConfigurationDirectory(), "togglechat"));
-        this.blurModHandler = new BlurModHandler(this).load();
     }
 
     @Mod.EventHandler
@@ -125,15 +92,6 @@ public class ToggleChatMod {
      */
     public ConfigLoader getConfigLoader() {
         return this.configLoader;
-    }
-
-    /**
-     * Getter for the blur mod handler, used for advanced customization
-     *
-     * @return the blur mod
-     */
-    public BlurModHandler getBlurModHandler() {
-        return this.blurModHandler;
     }
     
     /**

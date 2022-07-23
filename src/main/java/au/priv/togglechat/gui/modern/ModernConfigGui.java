@@ -1,19 +1,4 @@
-/*
- *     Copyright (C) 2022 Brock Vojkovic
- *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
 
 package au.priv.togglechat.gui.modern;
 
@@ -35,17 +20,6 @@ public class ModernConfigGui extends ToggleChatModernUI {
 
     @Override
     public void onGuiOpen() {
-        // Blur settings, turn this on for worse performance but with hotter UIs
-        registerElement(new ToggleChatButtonComponent(1, this.width / 2 - 75, this.height / 2 - 34, 150, 20, "Blur: " + getStatus(this.configLoader.isModernBlur()), button -> {
-            this.modified = true;
-    
-            this.configLoader.setModernBlur(!this.configLoader.isModernBlur());
-            button.setText("Blur: " + getStatus(this.configLoader.isModernBlur()));
-            this.mod.getBlurModHandler().reloadBlur(this.mc.currentScreen);
-        }).setButtonData(
-                "Toggles Gaussian bluring", "&aOn&r or &cOff&r", "on all our menus", "", "Created by &6tterrag1098", "for the BlurMC mod"
-        ));
-        
         // Toggles the style of the buttons for the mod, between one which renders the texture
         // pack style and the other which is literally just a transparent rectangle for a background.
         registerElement(new ToggleChatButtonComponent(2, this.width / 2 - 75, this.height / 2 - 10, 150, 20, "Buttons: " + getClassic(this.configLoader.isModernButton()), button -> {
@@ -83,7 +57,6 @@ public class ModernConfigGui extends ToggleChatModernUI {
     public void onRender(int mouseX, int mouseY, float partialTicks) {
         writeInformation(this.width / 2, this.height / 2 + 40, 12,
                 "&6Modern&r is our custom theme",
-                "featuring cleaner interfaces and game bluring",
                 "",
                 "&bClassic&r is the default game",
                 "theme, usually based on texturepacks"

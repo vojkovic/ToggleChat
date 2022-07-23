@@ -121,6 +121,6 @@ public abstract class ToggleChatModernUI extends ModernGui {
      * @return a formatted string containing the relevant status to the boolean
      */
     public static String getStatus(boolean in) {
-        return in ? ChatColor.GREEN + "Enabled" : (ToggleChatMod.getInstance().getConfigLoader().isModernButton() ? ChatColor.RED : ChatColor.GRAY) + "Disabled";
+        return in ? ChatColor.GREEN + "Shown" : (ToggleChatMod.getInstance().getConfigLoader().isModernButton() ? ChatColor.RED : ChatColor.GRAY) + "Hidden";
     }
 }
